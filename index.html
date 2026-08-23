@@ -2,25 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 #bk-root {
-  --paper: #3D0F19;
-  --bg-page: #4A0E1C;
-  --ink: #F3E3E6;
-  --ink-soft: #D9A9B2;
-  --line: rgba(255,255,255,0.14);
-  --money-in: #4FBE8D;
-  --money-in-bg: rgba(79,190,141,0.16);
-  --money-out: #E8A33D;
-  --money-out-bg: rgba(232,163,61,0.16);
-  --danger: #E23C56;
-  --accent: #F3E3D8;
-  --accent-ink: #4A0E1C;
-  --accent-bg: #E8D2C4;
+  --paper: #FCF6F5;
+  --bg-page: #FCF6F5;
+  --ink: #2A1014;
+  --ink-soft: #8A6570;
+  --line: #E7D3D3;
+  --money-in: #2F6F4E;
+  --money-in-bg: #E4EEE6;
+  --money-out: #A8402F;
+  --money-out-bg: #F3E4DF;
+  --danger: #C4213F;
+  --accent: #7A1428;
+  --accent-ink: #5C0F1F;
+  --accent-bg: #F1DCDD;
   --receipt-bg: #FFF8F3;
   --receipt-ink: #2B0810;
   --receipt-soft: #8B5A63;
   font-family: 'Inter', sans-serif;
   color: var(--ink);
-  background: linear-gradient(160deg, #2B060D 0%, #4A0E1C 55%, #6B1626 100%);
+  background: var(--paper);
   border-radius: 14px;
   padding: 0;
   max-width: 860px;
@@ -39,7 +39,7 @@
 /* Header */
 #bk-root .bk-header {
   background: linear-gradient(135deg, #1F0509, #3B0B14);
-  color: var(--ink);
+  color: #F3E3E6;
   padding: 22px 28px 18px;
   display: flex;
   align-items: baseline;
@@ -53,14 +53,14 @@
   font-size: 22px;
   background: transparent;
   border: none;
-  color: var(--paper);
+  color: #F3E3E6;
   outline: none;
   padding: 2px 0;
   border-bottom: 1px dashed transparent;
   max-width: 60%;
 }
 #bk-root .bk-header input:focus { border-bottom: 1px dashed var(--accent); }
-#bk-root .bk-header .bk-date { font-size: 12px; color: var(--ink-soft); font-family: 'IBM Plex Mono', monospace; }
+#bk-root .bk-header .bk-date { font-size: 12px; color: #D9AFB8; font-family: 'IBM Plex Mono', monospace; }
 #bk-root #bk-refresh-btn { transition: transform .4s ease; }
 #bk-root .bk-shared-banner {
   background: var(--accent-bg); color: var(--accent-ink); font-size: 11.5px;
@@ -91,7 +91,7 @@
 
 /* Dashboard */
 #bk-root .bk-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-bottom: 22px; }
-#bk-root .bk-stat { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: rgba(255,255,255,0.035); min-width: 0; overflow: hidden; }
+#bk-root .bk-stat { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: rgba(122,20,40,0.03); min-width: 0; overflow: hidden; }
 #bk-root .bk-stat .lbl { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 7px; line-height: 1.35; overflow-wrap: break-word; }
 #bk-root .bk-stat .val { font-family: 'IBM Plex Mono', monospace; font-size: clamp(14px, 3.2vw, 19px); font-weight: 500; line-height: 1.25; overflow-wrap: break-word; white-space: normal; }
 #bk-root .bk-stat.in .val { color: var(--money-in); }
@@ -132,11 +132,11 @@
 #bk-root .bk-btn.primary { background: var(--ink); color: var(--paper); }
 #bk-root .bk-btn.primary:hover { background: #333c53; }
 #bk-root .bk-btn.accent {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F3E3D8 45%, #E6CBB8 100%);
-  color: #4A0E1C;
-  box-shadow: 0 2px 10px rgba(243,227,216,0.25);
+  background: linear-gradient(135deg, #8A1830 0%, #6B0F24 100%);
+  color: #FFF6F2;
+  box-shadow: 0 2px 8px rgba(122,20,40,0.25);
 }
-#bk-root .bk-btn.accent:hover { background: linear-gradient(135deg, #F8EFE8 0%, #E9D2C0 60%, #DABBA5 100%); }
+#bk-root .bk-btn.accent:hover { background: linear-gradient(135deg, #7A1428 0%, #5C0F1F 100%); }
 #bk-root .bk-btn.ghost { background: transparent; color: var(--ink-soft); border: 1px solid var(--line); }
 #bk-root .bk-btn:disabled { opacity: .55; cursor: default; }
 
@@ -365,7 +365,7 @@ window.storage = {
 (function(){
   if (!SUPABASE_CONFIGURED) {
     document.getElementById('bk-body').innerHTML = `
-      <div style="padding:20px; border:1px dashed var(--danger,#E23C56); border-radius:10px; background:#3D0F19; color:#F3E3E6; font-size:13.5px; line-height:1.7;">
+      <div style="padding:20px; border:1px dashed var(--danger,#C4213F); border-radius:10px; background:#FBEAEC; color:#4A0F08; font-size:13.5px; line-height:1.7;">
         <strong>Supabase belum dikonfigurasi.</strong><br/>
         Buka file <code>index.html</code>, cari bagian <code>SUPABASE_URL</code> dan <code>SUPABASE_ANON_KEY</code> di dekat awal kode, lalu isi dengan data dari project Supabase kamu.<br/>
         Lihat <code>README.md</code> untuk langkah lengkapnya.
