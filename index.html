@@ -53,14 +53,28 @@
   font-size: 22px;
   background: transparent;
   border: none;
-  color: #F3E3E6;
   outline: none;
   padding: 2px 0;
   border-bottom: 1px dashed transparent;
-  max-width: 60%;
+  max-width: 100%;
+  background-image: linear-gradient(100deg, #FFFFFF 0%, #F6E9DF 25%, #FFFFFF 50%, #F6E9DF 75%, #FFFFFF 100%);
+  background-size: 220% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  caret-color: #F3E3E6;
+  animation: bk-shine-sweep 5s linear infinite;
+}
+@keyframes bk-shine-sweep {
+  0% { background-position: 0% 0; }
+  100% { background-position: -220% 0; }
 }
 #bk-root .bk-header input:focus { border-bottom: 1px dashed var(--accent); }
-#bk-root .bk-header .bk-date { font-size: 12px; color: #D9AFB8; font-family: 'IBM Plex Mono', monospace; }
+#bk-root .bk-header-brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+#bk-root .bk-logo-fish { width: 42px; height: 21px; flex-shrink: 0; color: #F3E3E6; filter: drop-shadow(0 0 4px rgba(255,255,255,0.45)); }
+#bk-root .bk-header-name { min-width: 0; }
+#bk-root .bk-tagline { font-size: 11px; font-style: italic; color: rgba(255,232,232,0.68); margin-top: 3px; letter-spacing: .02em; }
+#bk-root .bk-date { font-size: 12px; color: #D9AFB8; font-family: 'IBM Plex Mono', monospace; }
 #bk-root #bk-refresh-btn { transition: transform .4s ease; }
 #bk-root .bk-shared-banner {
   background: var(--accent-bg); color: var(--accent-ink); font-size: 11.5px;
@@ -311,17 +325,22 @@ html, body {
   body { padding: 40px 20px; box-sizing: border-box; }
 }
 #bk-root { position: relative; z-index: 1; }
-.bk-page-ornaments { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; display: none; }
-@media (min-width: 561px) { .bk-page-ornaments { display: block; } }
-.bk-page-ornaments svg { position: absolute; color: rgba(255,232,232,0.3); }
-.bk-page-ornaments .o1 { top: 5%;  left: 3%;  width: 76px; height: 76px; transform: rotate(-14deg); }
-.bk-page-ornaments .o2 { top: 12%; right: 5%; width: 68px; height: 45px; transform: rotate(10deg); }
-.bk-page-ornaments .o3 { bottom: 9%; left: 4%; width: 66px; height: 44px; transform: rotate(-16deg); }
-.bk-page-ornaments .o4 { bottom: 7%; right: 4%; width: 70px; height: 47px; transform: rotate(9deg); }
-.bk-page-ornaments .o5 { top: 44%; left: 1.5%; width: 46px; height: 46px; transform: rotate(22deg); opacity: 0.55; }
-.bk-page-ornaments .o6 { top: 58%; right: 2.5%; width: 54px; height: 36px; transform: rotate(-8deg); opacity: 0.55; }
-.bk-page-ornaments .o7 { top: 30%; right: 1%; width: 40px; height: 40px; transform: rotate(-30deg); opacity: 0.4; }
-.bk-page-ornaments .o8 { bottom: 30%; left: 1%; width: 42px; height: 28px; transform: rotate(18deg); opacity: 0.4; }
+.bk-page-shell { display: block; }
+.bk-orn-col { display: none; }
+@media (min-width: 1400px) {
+  .bk-page-shell { display: flex; justify-content: center; align-items: stretch; gap: 22px; }
+  .bk-orn-col {
+    display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+    width: 78px; padding: 18px 0; color: rgba(255,232,232,0.32); pointer-events: none;
+  }
+  .bk-orn-col svg { width: 100%; height: auto; display: block; }
+  .bk-orn-col.bk-orn-left svg:nth-child(1) { transform: rotate(-12deg); }
+  .bk-orn-col.bk-orn-left svg:nth-child(2) { transform: rotate(8deg); width: 82%; }
+  .bk-orn-col.bk-orn-left svg:nth-child(3) { transform: rotate(-18deg); width: 70%; }
+  .bk-orn-col.bk-orn-right svg:nth-child(1) { transform: rotate(10deg); }
+  .bk-orn-col.bk-orn-right svg:nth-child(2) { transform: rotate(-14deg); width: 78%; }
+  .bk-orn-col.bk-orn-right svg:nth-child(3) { transform: rotate(16deg); width: 68%; }
+}
 </style>
 
 <svg width="0" height="0" style="position:absolute;" aria-hidden="true">
@@ -358,23 +377,30 @@ html, body {
         <path d="M30,35 L30,7 M21,33 L26,8 M39,33 L34,8 M13,28 L20,9 M47,28 L40,9"/>
       </g>
     </symbol>
+    <symbol id="logo-tuna" viewBox="0 0 100 50">
+      <path fill="currentColor" d="M4,25 C4,12 22,4 42,6 C54,7 63,12 72,17 C78,13 87,9 96,9 C92,16 90,20 90,20 C90,20 92,24 96,31 C87,31 78,27 72,33 C63,38 54,43 42,44 C22,46 4,38 4,25 Z"/>
+      <path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M26,9 C29,5 36,3 42,4 M26,41 C29,45 36,47 42,46"/>
+      <circle cx="16" cy="19" r="2.1" fill="#2A1014"/>
+    </symbol>
   </defs>
 </svg>
 
-<div class="bk-page-ornaments" aria-hidden="true">
-  <svg class="o1"><use href="#orn-sakura"/></svg>
-  <svg class="o2"><use href="#orn-fish"/></svg>
-  <svg class="o3"><use href="#orn-shrimp"/></svg>
-  <svg class="o4"><use href="#orn-shell"/></svg>
-  <svg class="o5"><use href="#orn-sakura"/></svg>
-  <svg class="o6"><use href="#orn-fish"/></svg>
-  <svg class="o7"><use href="#orn-sakura"/></svg>
-  <svg class="o8"><use href="#orn-shrimp"/></svg>
-</div>
+<div class="bk-page-shell">
+  <div class="bk-orn-col bk-orn-left" aria-hidden="true">
+    <svg><use href="#orn-sakura"/></svg>
+    <svg><use href="#orn-shrimp"/></svg>
+    <svg><use href="#orn-sakura"/></svg>
+  </div>
 
-<div id="bk-root">
+  <div id="bk-root">
   <div class="bk-header">
-    <input id="bk-storename" value="GRIYA IKAN BSD" />
+    <div class="bk-header-brand">
+      <svg class="bk-logo-fish" viewBox="0 0 100 50"><use href="#logo-tuna"/></svg>
+      <div class="bk-header-name">
+        <input id="bk-storename" value="GRIYA IKAN BSD" />
+        <div class="bk-tagline">Ikan sehat untuk semuanya</div>
+      </div>
+    </div>
     <div style="display:flex; align-items:center; gap:10px;">
       <div class="bk-date" id="bk-today"></div>
       <div id="bk-refresh-btn" title="Muat ulang data terbaru" style="cursor:pointer; color:#C9CCD8; font-size:15px; user-select:none;">&#8635;</div>
@@ -385,6 +411,13 @@ html, body {
   </div>
   <div class="bk-tabs" id="bk-tabs"></div>
   <div class="bk-body" id="bk-body"></div>
+  </div>
+
+  <div class="bk-orn-col bk-orn-right" aria-hidden="true">
+    <svg><use href="#orn-fish"/></svg>
+    <svg><use href="#orn-shell"/></svg>
+    <svg><use href="#orn-fish"/></svg>
+  </div>
 </div>
 <div id="bk-modal-slot"></div>
 
