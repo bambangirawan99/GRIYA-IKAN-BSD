@@ -129,3 +129,5 @@ Kalau `AI_PROXY_URL` dikosongkan, fitur AI akan menampilkan pesan yang jelas ("F
 - Tidak ada sistem login/peran pengguna — siapa pun dengan link situs bisa mencatat & menghapus data.
 - HPP dihitung dari riwayat transaksi secara berurutan waktu — data yang tidak lengkap atau tidak berurutan akan membuat perhitungan kurang akurat.
 - WhatsApp memakai `wa.me` (membuka chat manual), bukan pengiriman otomatis tanpa klik.
+
+<!-- Terhubung dengan Claude untuk update otomatis -->
