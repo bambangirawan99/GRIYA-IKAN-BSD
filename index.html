@@ -292,7 +292,22 @@
   #bk-root .bk-filter { flex-wrap: wrap; }
 }
 @media (min-width: 561px) {
-  #bk-root { box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+  #bk-root { box-shadow: 0 4px 24px rgba(0,0,0,.35); }
+}
+@media (min-width: 1024px) {
+  #bk-root { max-width: 1180px; }
+  #bk-root .bk-header { padding: 26px 40px 22px; }
+  #bk-root .bk-shared-banner { padding: 6px 40px; }
+  #bk-root .bk-tabs { padding: 0 32px; }
+  #bk-root .bk-body { padding: 30px 40px 36px; }
+}
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(160deg, #2B060D 0%, #4A0E1C 55%, #6B1626 100%);
+}
+@media (min-width: 561px) {
+  body { padding: 40px 20px; box-sizing: border-box; }
 }
 </style>
 
