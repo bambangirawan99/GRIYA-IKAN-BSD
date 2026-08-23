@@ -2,21 +2,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 #bk-root {
-  --paper: #FBF9F3;
-  --bg-page: #EFEADC;
-  --ink: #22293A;
-  --ink-soft: #5B6072;
-  --line: #D9D2BC;
-  --money-in: #2F6F4E;
-  --money-in-bg: #E4EEE6;
-  --money-out: #A8402F;
-  --money-out-bg: #F3E4DF;
-  --accent: #B4832A;
-  --accent-ink: #4A3308;
-  --accent-bg: #F1E4C6;
+  --paper: #3D0F19;
+  --bg-page: #4A0E1C;
+  --ink: #F3E3E6;
+  --ink-soft: #D9A9B2;
+  --line: rgba(255,255,255,0.14);
+  --money-in: #4FBE8D;
+  --money-in-bg: rgba(79,190,141,0.16);
+  --money-out: #E8A33D;
+  --money-out-bg: rgba(232,163,61,0.16);
+  --danger: #E23C56;
+  --accent: #C4213F;
+  --accent-ink: #FFF4EF;
+  --accent-bg: rgba(196,33,63,0.22);
+  --receipt-bg: #FFF8F3;
+  --receipt-ink: #2B0810;
+  --receipt-soft: #8B5A63;
   font-family: 'Inter', sans-serif;
   color: var(--ink);
-  background: var(--bg-page);
+  background: linear-gradient(160deg, #2B060D 0%, #4A0E1C 55%, #6B1626 100%);
   border-radius: 14px;
   padding: 0;
   max-width: 860px;
@@ -25,13 +29,17 @@
   overflow: hidden;
 }
 #bk-root * { box-sizing: border-box; }
+#bk-root input, #bk-root select, #bk-root textarea {
+  background: #FFF8F5;
+  color: #2B0810;
+}
 #bk-root .disp { font-family: 'Fraunces', serif; }
 #bk-root .mono { font-family: 'IBM Plex Mono', monospace; }
 
 /* Header */
 #bk-root .bk-header {
-  background: var(--ink);
-  color: var(--paper);
+  background: linear-gradient(135deg, #1F0509, #3B0B14);
+  color: var(--ink);
   padding: 22px 28px 18px;
   display: flex;
   align-items: baseline;
@@ -52,7 +60,7 @@
   max-width: 60%;
 }
 #bk-root .bk-header input:focus { border-bottom: 1px dashed var(--accent); }
-#bk-root .bk-header .bk-date { font-size: 12px; color: #C9CCD8; font-family: 'IBM Plex Mono', monospace; }
+#bk-root .bk-header .bk-date { font-size: 12px; color: var(--ink-soft); font-family: 'IBM Plex Mono', monospace; }
 #bk-root #bk-refresh-btn { transition: transform .4s ease; }
 #bk-root .bk-shared-banner {
   background: var(--accent-bg); color: var(--accent-ink); font-size: 11.5px;
@@ -83,9 +91,9 @@
 
 /* Dashboard */
 #bk-root .bk-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 12px; margin-bottom: 22px; }
-#bk-root .bk-stat { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
-#bk-root .bk-stat .lbl { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
-#bk-root .bk-stat .val { font-family: 'IBM Plex Mono', monospace; font-size: 19px; font-weight: 500; }
+#bk-root .bk-stat { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: rgba(255,255,255,0.035); min-width: 0; overflow: hidden; }
+#bk-root .bk-stat .lbl { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 7px; line-height: 1.35; overflow-wrap: break-word; }
+#bk-root .bk-stat .val { font-family: 'IBM Plex Mono', monospace; font-size: clamp(14px, 3.2vw, 19px); font-weight: 500; line-height: 1.25; overflow-wrap: break-word; white-space: normal; }
 #bk-root .bk-stat.in .val { color: var(--money-in); }
 #bk-root .bk-stat.out .val { color: var(--money-out); }
 
@@ -114,7 +122,7 @@
 #bk-root .bk-quickai { display: flex; gap: 8px; margin-bottom: 18px; }
 #bk-root .bk-quickai input {
   flex: 1; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: 13.5px;
-  font-family: 'Inter', sans-serif; background: #fff;
+  font-family: 'Inter', sans-serif; background: #FFF8F5; color: #2B0810;
 }
 #bk-root .bk-quickai input:focus { outline: none; border-color: var(--accent); }
 #bk-root .bk-btn {
@@ -133,7 +141,7 @@
   border: 1px solid var(--line); border-radius: 7px; padding: 8px 9px; font-size: 13px; font-family: 'Inter', sans-serif;
 }
 #bk-root .bk-item-row input:focus { outline: none; border-color: var(--accent); }
-#bk-root .bk-item-row .rm { cursor: pointer; color: var(--money-out); text-align: center; font-size: 16px; user-select: none; }
+#bk-root .bk-item-row .rm { cursor: pointer; color: var(--danger); text-align: center; font-size: 16px; user-select: none; }
 #bk-root .bk-item-head { display: grid; grid-template-columns: 1fr 70px 100px 110px 30px; gap: 8px; font-size: 10.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 6px; }
 
 #bk-root .bk-prod-item-row { display: grid; grid-template-columns: 1fr 90px 90px 30px; gap: 8px; margin-bottom: 8px; align-items: center; }
@@ -141,7 +149,7 @@
   border: 1px solid var(--line); border-radius: 7px; padding: 8px 9px; font-size: 13px; font-family: 'Inter', sans-serif;
 }
 #bk-root .bk-prod-item-row input:focus { outline: none; border-color: var(--accent); }
-#bk-root .bk-prod-item-row .rm { cursor: pointer; color: var(--money-out); text-align: center; font-size: 16px; user-select: none; }
+#bk-root .bk-prod-item-row .rm { cursor: pointer; color: var(--danger); text-align: center; font-size: 16px; user-select: none; }
 #bk-root .bk-prod-item-head { display: grid; grid-template-columns: 1fr 90px 90px 30px; gap: 8px; font-size: 10.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .03em; margin-bottom: 6px; }
 
 #bk-root .bk-field { margin-bottom: 14px; }
@@ -153,7 +161,7 @@
 #bk-root .bk-total-line { display: flex; justify-content: space-between; align-items: center; margin: 16px 0 18px; padding-top: 12px; border-top: 1px solid var(--line); }
 #bk-root .bk-total-line .t-lbl { font-size: 13px; color: var(--ink-soft); }
 #bk-root .bk-total-line .t-val { font-family: 'IBM Plex Mono', monospace; font-size: 20px; font-weight: 600; }
-#bk-root .bk-err { color: var(--money-out); font-size: 12px; margin-top: -8px; margin-bottom: 12px; }
+#bk-root .bk-err { color: var(--danger); font-size: 12px; margin-top: -8px; margin-bottom: 12px; }
 #bk-root .bk-msg { font-size: 12px; color: var(--ink-soft); margin-left: 4px; }
 
 /* Riwayat filter */
@@ -167,11 +175,11 @@
 #bk-root .bk-badge.belum { background: var(--money-out-bg); color: var(--money-out); }
 #bk-root .bk-row-actions { display: flex; gap: 4px; flex-shrink: 0; }
 #bk-root .bk-icon-btn {
-  border: 1px solid var(--line); background: #fff; border-radius: 6px; width: 26px; height: 26px;
+  border: 1px solid var(--line); background: #FFF8F5; border-radius: 6px; width: 26px; height: 26px;
   display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 13px; color: var(--ink-soft);
 }
 #bk-root .bk-icon-btn:hover { color: var(--ink); border-color: var(--ink-soft); }
-#bk-root .bk-icon-btn.danger:hover { color: var(--money-out); border-color: var(--money-out); }
+#bk-root .bk-icon-btn.danger:hover { color: var(--danger); border-color: var(--danger); }
 #bk-root .bk-list-row-wrap { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 #bk-root .bk-list-row-wrap:last-child { border-bottom: none; }
 #bk-root .bk-list-row-wrap .bk-list-row { flex: 1; padding: 0; border-bottom: none; }
@@ -179,7 +187,7 @@
 #bk-root .bk-select-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
 #bk-root .bk-select-all { display: flex; align-items: center; gap: 8px; color: var(--ink-soft); cursor: pointer; user-select: none; }
 #bk-root .bk-select-all input { width: 16px; height: 16px; cursor: pointer; }
-#bk-root .bk-bulk-del { display: none; background: var(--money-out); color: #fff; }
+#bk-root .bk-bulk-del { display: none; background: var(--danger); color: #fff; }
 #bk-root .bk-bulk-del.show { display: inline-flex; }
 #bk-root .bk-checkbox-row { display: flex; align-items: center; gap: 8px; margin-bottom: 14px; font-size: 13px; }
 #bk-root .bk-checkbox-row input { width: 16px; height: 16px; }
@@ -207,24 +215,24 @@
   z-index: 999; padding: 24px;
 }
 #bk-root .bk-receipt {
-  width: 300px; background: var(--paper); padding: 22px 20px 4px;
-  font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink);
-  box-shadow: 0 12px 30px rgba(0,0,0,.25);
+  width: 300px; background: var(--receipt-bg); padding: 22px 20px 4px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--receipt-ink);
+  box-shadow: 0 12px 30px rgba(0,0,0,.45);
 }
 #bk-root .bk-receipt .r-store { font-family: 'Fraunces', serif; font-weight: 600; font-size: 16px; text-align: center; }
-#bk-root .bk-receipt .r-sub { text-align: center; color: var(--ink-soft); font-size: 10.5px; margin-top: 2px; }
-#bk-root .bk-receipt hr { border: none; border-top: 1px dashed var(--line); margin: 12px 0; }
+#bk-root .bk-receipt .r-sub { text-align: center; color: var(--receipt-soft); font-size: 10.5px; margin-top: 2px; }
+#bk-root .bk-receipt hr { border: none; border-top: 1px dashed rgba(43,8,16,0.25); margin: 12px 0; }
 #bk-root .bk-receipt .r-item { margin-bottom: 6px; }
 #bk-root .bk-receipt .r-item-top { display: flex; justify-content: space-between; }
-#bk-root .bk-receipt .r-item-sub { color: var(--ink-soft); font-size: 10.5px; margin-top: 1px; }
-#bk-root .bk-receipt .r-item .qn { color: var(--ink-soft); font-size: 11px; }
+#bk-root .bk-receipt .r-item-sub { color: var(--receipt-soft); font-size: 10.5px; margin-top: 1px; }
+#bk-root .bk-receipt .r-item .qn { color: var(--receipt-soft); font-size: 11px; }
 #bk-root .bk-receipt .r-total { display: flex; justify-content: space-between; font-weight: 600; font-size: 13px; margin-top: 6px; }
-#bk-root .bk-receipt .r-note { text-align: center; font-size: 10.5px; color: var(--ink-soft); margin-top: 10px; }
+#bk-root .bk-receipt .r-note { text-align: center; font-size: 10.5px; color: var(--receipt-soft); margin-top: 10px; }
 #bk-root .zigzag {
   height: 12px;
   background:
-    linear-gradient(135deg, var(--bg-page) 50%, transparent 50%) 0 0/16px 12px repeat-x,
-    linear-gradient(-135deg, var(--bg-page) 50%, transparent 50%) 0 0/16px 12px repeat-x;
+    linear-gradient(135deg, #241014 50%, transparent 50%) 0 0/16px 12px repeat-x,
+    linear-gradient(-135deg, #241014 50%, transparent 50%) 0 0/16px 12px repeat-x;
 }
 #bk-root .bk-receipt-actions { width: 300px; display: flex; gap: 8px; margin-top: 14px; }
 #bk-root .bk-receipt-actions .bk-btn { flex: 1; }
@@ -241,7 +249,6 @@
   #bk-root .bk-body { padding: 16px 16px 22px; min-height: 260px; }
   #bk-root .bk-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
   #bk-root .bk-stat { padding: 11px 12px; }
-  #bk-root .bk-stat .val { font-size: 16px; }
   #bk-root .bk-two-col { grid-template-columns: 1fr; }
   #bk-root .bk-quickai { flex-direction: column; }
   #bk-root .bk-quickai input { width: 100%; }
@@ -354,7 +361,7 @@ window.storage = {
 (function(){
   if (!SUPABASE_CONFIGURED) {
     document.getElementById('bk-body').innerHTML = `
-      <div style="padding:20px; border:1px dashed var(--money-out,#A8402F); border-radius:10px; background:#F3E4DF; color:#4A0F08; font-size:13.5px; line-height:1.7;">
+      <div style="padding:20px; border:1px dashed var(--danger,#E23C56); border-radius:10px; background:#3D0F19; color:#F3E3E6; font-size:13.5px; line-height:1.7;">
         <strong>Supabase belum dikonfigurasi.</strong><br/>
         Buka file <code>index.html</code>, cari bagian <code>SUPABASE_URL</code> dan <code>SUPABASE_ANON_KEY</code> di dekat awal kode, lalu isi dengan data dari project Supabase kamu.<br/>
         Lihat <code>README.md</code> untuk langkah lengkapnya.
@@ -926,7 +933,7 @@ window.storage = {
             <div class="r-note">${new Date(t.createdAt).toLocaleString('id-ID')}${t.customerName ? ' &middot; '+t.customerName : ''}</div>
             <hr/>
             <div style="text-align:center; font-size:11px; line-height:1.6;">
-              <div style="color:var(--ink-soft);">Pembayaran transfer ke:</div>
+              <div style="color:var(--receipt-soft);">Pembayaran transfer ke:</div>
               <div style="font-weight:600;">BCA 6760677301</div>
               <div>a.n. Rodiyati</div>
             </div>
@@ -972,7 +979,7 @@ window.storage = {
           <div style="font-size:14px; margin-bottom:18px; color:var(--ink); line-height:1.5;">${message}</div>
           <div style="display:flex; gap:10px;">
             <button class="bk-btn ghost" id="bk-confirm-cancel" style="flex:1;">Batal</button>
-            <button class="bk-btn primary" id="bk-confirm-ok" style="flex:1; background:var(--money-out);">Hapus</button>
+            <button class="bk-btn primary" id="bk-confirm-ok" style="flex:1; background:var(--danger);">Hapus</button>
           </div>
         </div>
       </div>
@@ -986,7 +993,7 @@ window.storage = {
   function showToast(msg) {
     const t = document.createElement('div');
     t.textContent = msg;
-    t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#22293A;color:#FBF9F3;padding:10px 18px;border-radius:8px;font-size:13px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,.25);max-width:90%;text-align:center;';
+    t.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#26060B;color:#F3E3E6;padding:10px 18px;border-radius:8px;font-size:13px;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,.45);max-width:90%;text-align:center;border:1px solid rgba(255,255,255,0.12);';
     document.body.appendChild(t);
     setTimeout(() => t.remove(), 2500);
   }
@@ -1005,7 +1012,7 @@ window.storage = {
     bodyEl.innerHTML = `
       <div class="bk-field" style="max-width:260px;">
         <label>Bulan</label>
-        <select id="bk-month-select" style="width:100%; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:13.5px; font-family:'Inter',sans-serif; background:#fff;">
+        <select id="bk-month-select" style="width:100%; border:1px solid var(--line); border-radius:8px; padding:9px 11px; font-size:13.5px; font-family:'Inter',sans-serif; background:#FFF8F5; color:#2B0810;">
           <option value="semua" ${riwayatMonth==='semua'?'selected':''}>Semua bulan</option>
           ${months.map(m => `<option value="${m}" ${riwayatMonth===m?'selected':''}>${monthLabel(m)}</option>`).join('')}
         </select>
